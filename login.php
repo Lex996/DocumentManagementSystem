@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$result) { echo "'Could not run query: ' . mysql_error()";   exit; }
     $row =(mysqli_fetch_array($result));
      if ($row ) {    
-    // $_SESSION['level']=$row['level'];
+
     $_SESSION['user']=$U;
     echo("Uspesno logovanje");
    // header("location:index.php"); }
