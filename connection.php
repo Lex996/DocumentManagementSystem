@@ -1,15 +1,15 @@
 <?php
-session_regenerate_id(TRUE);
+//session_regenerate_id(TRUE);
 
 
 
-$con = new mysqli("localhost","root","", "mydb9eng");
+$con = new mysqli("localhost","root","", "dms");
 if (!$con)
   {
   die('Could not connect: '.mysql_error());
   }
 
-$table='table2';
+$table='data';
 
 //-----------------user level in members table not in use this is why I set admin here--
 $admin="admin";
