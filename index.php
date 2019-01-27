@@ -66,27 +66,25 @@ echo "<h1>$title</h1>";
 
 if (isset($_SESSION['user'])) {
 // ------------------import labels --------------------
-$lbl='SELECT * FROM datas';
+/*$lbl='SELECT * FROM datas';
 
 $labelz=mysqli_query($con, "$lbl");
 
-$rowlbl = mysqli_fetch_array($labelz);
-
+$rowlbl = mysqli_fetch_array($labelz);*/
 // ----------------------------------------------
 ?>  
 <table  bgcolor=#C7C5E9 cellpadding=3 ><tr>
 <form method="POST" action="showlist.php">
 <td>
 <select name=condition>
-<option ></option>
-<option value="ContractNo"><?php echo $rowlbl['ContractNo']; ?></option>
-<option value="Section"><?php echo $rowlbl['Section']; ?></option>
-<option value="Subject"><?php echo $rowlbl['Subject']; ?></option>
-<option value="RefNo"><?php echo $rowlbl['RefNo']; ?></option>
-<option value="Company"><?php echo $rowlbl['Company'] ;?></option>
-<option value="Employee"> <?php echo $rowlbl['Employee']; ?></option>
-<option value="Date"><?php echo $rowlbl['Date']; ?></option>
-<option value="Document"><?php echo $rowlbl['Document']; ?></option>
+<option value="ContractNo">ContractNo</option>
+<option value="Section">Section</option>
+<option value="Subject">Subject</option>
+<option value="RefNo">RefNo</option>
+<option value="Company">Company</option>
+<option value="Employee">Employee</option>
+<option value="Date">Date</option>
+<option value="Document">Document</option>
 </select>
 </td>
 
@@ -103,13 +101,13 @@ $rowlbl = mysqli_fetch_array($labelz);
  onSubmit='return ValidateForm()'>";*/
 // --------------------------------------
 
-$sqlcont='SELECT DISTINCT field1 FROM datas';
+$sqlcont='SELECT DISTINCT ContractNo FROM datas';
 
 
 $result=mysqli_query($con, "$sqlcont");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br>".$rowlbl['ContractNo']." <select name=ContractNo>";
+echo "<br> Contract <select name=ContractNo>";
 while($row = mysqli_fetch_array($result))
   { echo "<option>".$row['ContractNo']."</option>";}
 echo "</select >";
@@ -117,24 +115,24 @@ echo "  or new <input type=text name=anothercont  size=20 onkeypress='return don
 echo "   Year <input type=text name=yr  size=6 maxlength=4 onkeypress='return dont(event)' >  ";
 // -------------------------------
 
-echo $rowlbl['Section']." <select name=Section>
+echo "Section <select name=Section>
 <option>external <option>
 <option>local <option>
 <option>bond<option>
 <option>msci<option>
 </select>
-<br><br>".$rowlbl['Subject']." <input type=text name=Subject  size=76> <br><br>
+<br><br> Subject<input type=text name=Subject  size=76> <br><br>
  Document File <input type='file' name='uploaded_file'>
-<br><br>".$rowlbl['RefNo']." <input type=text name=RefNo  size=80>
-<br><br>".$rowlbl['Company']." <input type=text name=Company  size=30>";
+<br><br> Description <input type=text name=Description  size=80>
+<br><br> RefNo <input type=text name=RefNo  size=30>";
 // --------------------------------------
 
 $sqlco='SELECT DISTINCT Company FROM datas';
 
-$result=mysqli_query("$sqlco");
+$result=mysqli_query($con, "$sqlco");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br><br>".$rowlbl['Company']." <select name=field6>";
+echo "<br><br> Company <select name=field6>";
 while($row = mysqli_fetch_array($result))
   { echo "<option>".$row['Company']."</option>";}
 echo "</select >";
@@ -144,15 +142,15 @@ echo "   or new <input type=text name=newco  size=44>";
 // --------------------------------------
 $sqlemp='SELECT DISTINCT Employee FROM datas';
 
-$result=mysqli_query("$sqlemp");
+$result=mysqli_query($con, "$sqlemp");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br><br>".$rowlbl['Employee']." <select name=Employee>";
+echo "<br><br>Employee<select name=Employee>";
 while($row = mysqli_fetch_array($result))
   { echo "<option>".$row['Employee']."</option>";}
 echo "</select >";
 echo "  or new<input type=text name=anotheremp  size=24>    ";
-echo $rowlbl['Date']." <input type=text name=Date  size=12 value='".date('Y-m-d')."' readonly>
+echo " Date <input type=text name=Date  size=12 value='".date('Y-m-d')."' readonly>
 <p align=center><input type=submit value='SUBMIT' ></p></form>";
 echo "</div></div>";
 echo $_SESSION['user'];
@@ -160,7 +158,7 @@ echo " | <a href='out'>Logout</a><b> | ";
 if ($_SESSION['user']==$admin) {
 echo " <a href='reg'>Users</a> | ";
 // echo $_SESSION['level'];
-echo " <a href='labels'>Labels translation</a><br><br>Developed By abubasil. Brought To You By code-projects.org"; } } else {include "login.html";}
+echo " <a href='labels'>Labels translation</a><br><br>"; } } else {include "login.html";}
 
 ?>
 
