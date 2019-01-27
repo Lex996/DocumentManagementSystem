@@ -1,34 +1,29 @@
 <html>
-<head>
-<title>DMS</title>
-<link rel="stylesheet" type="text/css" href="showlist.css" />
-
-</head>
-<body>
+  <head>
+    <title>DMS</title>
+    <link rel="stylesheet" type="text/css" href="showlist.css" />
+  </head>
+  <body>
 <?php
 include "connection.php";
 session_start();
-require_once"connection.php";
-
+//require_once"connection.php";
 if (!isset($_SESSION['user'])) {
   header("location:index.php");
 } else {
-echo "<h1>$title <a href='index.php'><img src='img/favicon.ico'></a></h1>";
+echo "<h1> $title <a href='index.php'><img src='img/favicon.ico'></a></h1>";
 $sql='SELECT * FROM '.$table;
 
-if (isset($_POST['condition'])) { $sql=$sql.' WHERE '.$_POST['condition'].' ';
+if (isset($_POST['condition'])) { 
+  $sql=$sql.' WHERE '.$_POST['condition'].' ';
+  if (!empty($_POST['value4comparison'])) { 
+    $_POST['value4comparison']=trim($_POST['value4comparison']);
+    $sql=$sql." LIKE '%".$_POST['value4comparison']."%'";
+    echo $sql;
+  }
 
-if (!empty($_POST['value4comparison'])) { 
-$_POST['value4comparison']=trim($_POST['value4comparison']);
-$sql=$sql." LIKE '%".$_POST['value4comparison']."%'";
-echo $sql;
-
-
+  else { echo "Please set a value for search"; exit();} 
 }
-
-else { echo "Please set a value for search"; exit();} }
-
-
 
 $result=mysqli_query($con, "$sql");
 if (!$result) {echo "No results found  ".mysqli_error(); exit();} 
@@ -41,17 +36,23 @@ $rowlbl = mysqli_fetch_array($labelz);
 
 // ----------------------------------------------
 echo "<center><table >";
-echo "<thead><tr><td>".$rowlbl['field1']."</td><td>file type</td><td>".$rowlbl['field2']."</td><td>".$rowlbl['field3']."</td><td>".$rowlbl['field5']."</td><td>".$rowlbl['field6']."</td><td>".$rowlbl['field7']."</td><td>".$rowlbl['field8']."</td><td>delete</td><td>edit</td></tr></thead>";
+echo "<thead><tr><td>
+Contract
+</td><td>file type</td><td></td><td>".$rowlbl['field3']."</td><td>".$rowlbl['field5']."</td><td>".$rowlbl['field6']."</td><td>".$rowlbl['field7']."</td><td>".$rowlbl['field8']."</td><td>delete</td><td>edit</td></tr></thead>";
 while($row = mysqli_fetch_array($result))
   {
 echo "<tr>";
 
 
-if (!empty($row[9])) { echo "<td><b>$row[1]</b></td>";} 
-$fileasm='upload/'.$row[1].'/'.$row[8].'/'.$row[9];
+if (!empty($row[9])) {
+   echo "<td><b>$row[1]</b></td>";
+  } 
+ $fileasm='upload/'.$row[1].'/'.$row[8].'/'.$row[9];
  $ext = substr($fileasm, strrpos($fileasm, '.') + 1);
- echo "<td><a href='upload/$row[1]/$row[8]/$row[9]' target=new>
-<img src='img/".$ext .".png'></a></td>";
+ echo "<td>
+      <a href='upload/$row[1]/$row[8]/$row[9]' target=new>
+      <img src='img/".$ext .".png'></a>
+      </td>";
 if (!empty($row[2])) { echo "</td><td>$row[2]</td>";} else { echo "<td>..</td>";}
 
 if (!empty($row[3])) { echo "<td>$row[3]</td>";} else { echo "<td></td>";}
