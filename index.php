@@ -98,59 +98,61 @@ $rowlbl = mysqli_fetch_array($labelz);
 <?php
 
 
-echo "<br><center><div><h3>Data Entry:<br>
+/*echo "<br><center><div><h3>Data Entry:<br>
 <form  method=post name=goo action='insert.php' enctype='multipart/form-data'
- onSubmit='return ValidateForm()'>";
+ onSubmit='return ValidateForm()'>";*/
 // --------------------------------------
+
 $sqlcont='SELECT DISTINCT field1 FROM datas';
+
 
 $result=mysqli_query($con, "$sqlcont");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br>".$rowlbl['field1']." <select name=field1>";
-while($row = mysql_fetch_array($result))
-  { echo "<option>".$row['field1']."</option>";}
+echo "<br>".$rowlbl['ContractNo']." <select name=ContractNo>";
+while($row = mysqli_fetch_array($result))
+  { echo "<option>".$row['ContractNo']."</option>";}
 echo "</select >";
 echo "  or new <input type=text name=anothercont  size=20 onkeypress='return dont(event)' >  ";
 echo "   Year <input type=text name=yr  size=6 maxlength=4 onkeypress='return dont(event)' >  ";
 // -------------------------------
 
-echo $rowlbl['field2']." <select name=field2>
+echo $rowlbl['Section']." <select name=Section>
 <option>external <option>
 <option>local <option>
 <option>bond<option>
 <option>msci<option>
 </select>
-<br><br>".$rowlbl['field3']." <input type=text name=field3  size=76> <br><br>
+<br><br>".$rowlbl['Subject']." <input type=text name=Subject  size=76> <br><br>
  Document File <input type='file' name='uploaded_file'>
-<br><br>".$rowlbl['field4']." <input type=text name=field4  size=80>
-<br><br>".$rowlbl['field5']." <input type=text name=field5  size=30>";
+<br><br>".$rowlbl['RefNo']." <input type=text name=RefNo  size=80>
+<br><br>".$rowlbl['Company']." <input type=text name=Company  size=30>";
 // --------------------------------------
 
-$sqlco='SELECT DISTINCT field6 FROM table2';
+$sqlco='SELECT DISTINCT Company FROM datas';
 
-$result=mysql_query("$sqlco");
-if (!$result) {echo "No results found ".mysql_error(); exit();} 
+$result=mysqli_query("$sqlco");
+if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br><br>".$rowlbl['field6']." <select name=field6>";
-while($row = mysql_fetch_array($result))
-  { echo "<option>".$row['field6']."</option>";}
+echo "<br><br>".$rowlbl['Company']." <select name=field6>";
+while($row = mysqli_fetch_array($result))
+  { echo "<option>".$row['Company']."</option>";}
 echo "</select >";
 echo "   or new <input type=text name=newco  size=44>";
 
 
 // --------------------------------------
-$sqlemp='SELECT DISTINCT field7 FROM table2';
+$sqlemp='SELECT DISTINCT Employee FROM datas';
 
-$result=mysql_query("$sqlemp");
-if (!$result) {echo "No results found ".mysql_error(); exit();} 
+$result=mysqli_query("$sqlemp");
+if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br><br>".$rowlbl['field7']." <select name=field7>";
-while($row = mysql_fetch_array($result))
-  { echo "<option>".$row['field7']."</option>";}
+echo "<br><br>".$rowlbl['Employee']." <select name=Employee>";
+while($row = mysqli_fetch_array($result))
+  { echo "<option>".$row['Employee']."</option>";}
 echo "</select >";
 echo "  or new<input type=text name=anotheremp  size=24>    ";
-echo $rowlbl['field8']." <input type=text name=field8  size=12 value='".date('Y-m-d')."' readonly>
+echo $rowlbl['Date']." <input type=text name=Date  size=12 value='".date('Y-m-d')."' readonly>
 <p align=center><input type=submit value='SUBMIT' ></p></form>";
 echo "</div></div>";
 echo $_SESSION['user'];
@@ -158,7 +160,7 @@ echo " | <a href='out'>Logout</a><b> | ";
 if ($_SESSION['user']==$admin) {
 echo " <a href='reg'>Users</a> | ";
 // echo $_SESSION['level'];
-echo " <a href='labels'>Labels translation</a><br><br>Developed By abubasil. Brought To You By code-projects.org"; } } else {include "log.html";}
+echo " <a href='labels'>Labels translation</a><br><br>Developed By abubasil. Brought To You By code-projects.org"; } } else {include "login.html";}
 
 ?>
 
