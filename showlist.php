@@ -19,7 +19,6 @@ if (isset($_POST['condition'])) {
   if (!empty($_POST['value4comparison'])) { 
     $_POST['value4comparison']=trim($_POST['value4comparison']);
     $sql=$sql." LIKE '%".$_POST['value4comparison']."%'";
-    echo $sql;
   }
 
   else { echo "Please set a value for search"; exit();} 
@@ -28,11 +27,11 @@ if (isset($_POST['condition'])) {
 $result=mysqli_query($con, "$sql");
 if (!$result) {echo "No results found  ".mysqli_error(); exit();} 
 // ------------------import labels --------------------
-$lbl='SELECT * FROM table1';
+/*$lbl='SELECT * FROM table1';
 
 $labelz=mysqli_query($con, "$lbl");
 
-$rowlbl = mysqli_fetch_array($labelz);
+$rowlbl = mysqli_fetch_array($labelz);*/
 
 // ----------------------------------------------
 echo "<center><table >";
@@ -55,13 +54,13 @@ while($row = mysqli_fetch_array($result))
 echo "<tr>";
 
 
-if (!empty($row[9])) {
-   echo "<td><b>$row[1]</b></td>";
+if (!empty($row[1])) {
+   echo "<td>$row[1]</td>";
   } 
- $fileasm='upload/'.$row[1].'/'.$row[8].'/'.$row[9];
+ $fileasm='upload/'.$row['ContractNo'].'/'.$row['Date'].'/'.$row['Document'];
  $ext = substr($fileasm, strrpos($fileasm, '.') + 1);
  echo "<td>
-      <a href='upload/$row[1]/$row[8]/$row[9]' target=new>
+      <a href=$fileasm>
       <img src='img/".$ext .".png'></a>
       </td>";
 if (!empty($row[2])) { echo "</td><td>$row[2]</td>";} else { echo "<td>..</td>";}
