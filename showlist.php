@@ -36,9 +36,20 @@ $rowlbl = mysqli_fetch_array($labelz);
 
 // ----------------------------------------------
 echo "<center><table >";
-echo "<thead><tr><td>
-Contract
-</td><td>file type</td><td></td><td>".$rowlbl['field3']."</td><td>".$rowlbl['field5']."</td><td>".$rowlbl['field6']."</td><td>".$rowlbl['field7']."</td><td>".$rowlbl['field8']."</td><td>delete</td><td>edit</td></tr></thead>";
+echo "<thead>
+<tr>
+<td>ContractNo</td>
+<td>Section</td>
+<td>Subject</td>
+<td>RefNo</td>
+<td>Company</td>
+<td>Employee</td>
+<td>Date</td>
+<td>Document</td>
+<td>delete</td>
+<td>edit</td>
+</tr>
+</thead>";
 while($row = mysqli_fetch_array($result))
   {
 echo "<tr>";
