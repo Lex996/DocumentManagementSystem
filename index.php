@@ -111,12 +111,10 @@ $sqlcont='SELECT DISTINCT ContractNo FROM datas';
 $result=mysqli_query($con, "$sqlcont");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br> Contract <select name=ContractNo>";
-while($row = mysqli_fetch_array($result))
-  { echo "<option>".$row['ContractNo']."</option>";}
-echo "</select >";
-echo "  or new <input type=text name=anothercont  size=20 onkeypress='return dont(event)' >  ";
-echo "   Year <input type=text name=yr  size=6 maxlength=4 onkeypress='return dont(event)' >  ";
+
+
+echo "  ContractNo <input type=text name=ContractNo  size=20 onkeypress='return dont(event)' >  ";
+
 // -------------------------------
 
 echo "Section <select name=Section>
