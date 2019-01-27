@@ -1,0 +1,26 @@
+input {font-size:14;font-weight:bold
+border:1px solid black;
+border-radius:6px;
+}
+body {font-size:14;font-weight:bold;
+background-image: url('img/sil.jpg');
+padding:4;
+ } 
+table{
+text-align:left;
+padding:4;
+border:10px solid grey;
+border-radius:8px;
+background-image: url('img/ptn.jpg');}
+input {text-align:center;}
+div { border:12px solid grey;
+border-radius:8px;
+padding:4;
+
+}
+text-align:right;
+
+
+input {font-size:14;font-weight:bold}
+
+ } 
