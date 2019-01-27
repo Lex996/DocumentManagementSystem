@@ -1,24 +1,7 @@
 <html>
 <head>
 <title>DMS</title>
-<style>
-tr:hover {background:#bfbfbf;}
-
-a {color:blue;  text-decoration: none;}
-table {
-text-align:center;
-padding:2;
-border:10px solid grey;
-border-radius:8px;
-background-image: url('img/ptn.jpg');
-width:95%;}
-td {padding:2;}
-input {font-size:15;font-weight:bold}
-body{font-size:14;font-weight:bold;
-background-image: url('img/sil.jpg');
-}
-thead {background:grey;}
-</style>
+<link rel="stylesheet" type="text/css" href="showlist.css" />
 
 </head>
 <body>
@@ -27,20 +10,18 @@ include "connection.php";
 session_start();
 require_once"connection.php";
 
-if (!isset($_SESSION['user'])) {header("location:index.php");} else {
+if (!isset($_SESSION['user'])) {
+  header("location:index.php");
+} else {
 echo "<h1>$title <a href='index.php'><img src='img/favicon.ico'></a></h1>";
 $sql='SELECT * FROM '.$table;
 
 if (isset($_POST['condition'])) { $sql=$sql.' WHERE '.$_POST['condition'].' ';
 
-if (!empty($_POST['criteriaa'])) { $sql=$sql.$_POST['criteriaa'].' ';} 
-else { echo "Please set a criteria"; exit();}
-
 if (!empty($_POST['value4comparison'])) { 
 $_POST['value4comparison']=trim($_POST['value4comparison']);
-if ($_POST['criteriaa']==">" or $_POST['criteriaa']=="<") {
-$sql=$sql.$_POST['value4comparison']; }
-else {$sql=$sql."'%".$_POST['value4comparison']."%'";}
+$sql=$sql." LIKE '%".$_POST['value4comparison']."%'";
+echo $sql;
 
 
 }
@@ -49,12 +30,12 @@ else { echo "Please set a value for search"; exit();} }
 
 
 
-$result=mysqli_query("$sql");
+$result=mysqli_query($con, "$sql");
 if (!$result) {echo "No results found  ".mysqli_error(); exit();} 
 // ------------------import labels --------------------
 $lbl='SELECT * FROM table1';
 
-$labelz=mysqli_query("$lbl");
+$labelz=mysqli_query($con, "$lbl");
 
 $rowlbl = mysqli_fetch_array($labelz);
 

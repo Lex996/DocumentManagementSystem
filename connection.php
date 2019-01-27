@@ -9,7 +9,7 @@ if (!$con)
   die('Could not connect: '.mysql_error());
   }
 
-$table='data';
+$table='datas';
 
 //-----------------user level in members table not in use this is why I set admin here--
 $admin="admin";
