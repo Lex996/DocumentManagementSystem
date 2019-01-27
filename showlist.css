@@ -1,0 +1,31 @@
+tr:hover {
+    background:#bfbfbf;
+}
+
+a {
+    color:blue;
+    text-decoration: none;
+}
+table {
+    text-align:center;
+    padding:2;
+    border:10px solid grey;
+    border-radius:8px;
+    background-image: url('img/ptn.jpg');
+    width:95%;
+}
+td {
+    padding:2;
+}
+input {
+    font-size:15;
+    font-weight:bold;
+}
+body{
+    font-size:14;
+    font-weight:bold;
+    background-image: url('img/sil.jpg');
+}
+thead {
+    background:grey;
+}
