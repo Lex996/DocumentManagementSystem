@@ -7,14 +7,14 @@ include "connection.php";
 
 ?>
 <html>
-
     <head>
         <meta charset="UTF-8" />
          <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
    <title>DMS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="shortcut icon" href="img/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        
+        <link rel="stylesheet" type="text/css" href="index.css" />
 	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
   <script type="text/javascript" src="validate.js" ></script> 
     </head>
@@ -43,6 +43,7 @@ if (document.goo.field8.value == '') { Check = 1; }
             return true;
         }
     }
+    
     //-->
     </script>
   <SCRIPT language=Javascript>
@@ -83,7 +84,7 @@ $rowlbl = mysqli_fetch_array($labelz);*/
 <option value="RefNo">RefNo</option>
 <option value="Company">Company</option>
 <option value="Employee">Employee</option>
-<option value="Date">Date</option>
+
 <option value="Document">Document</option>
 </select>
 </td>
