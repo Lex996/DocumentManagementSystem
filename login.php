@@ -4,6 +4,7 @@ include "login.html";
 session_start();
 $U="";
 $P="";
+$result="";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // ----------------security-----------------
     
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("location:index.php"); }
      }
     else { echo($result);
-     mysql_close($con);} }
+     mysqli_close($con);} 
     ?>
 
 
