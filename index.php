@@ -65,6 +65,7 @@ if (document.goo.field8.value == '') { Check = 1; }
 echo "<h1>$title</h1>";
 
 
+
 if (isset($_SESSION['user'])) {
 // ------------------import labels --------------------
 /*$lbl='SELECT * FROM datas';
@@ -101,6 +102,10 @@ echo "<br><center><div><h3>Data Entry:<br>
 <form  method=post name=goo action='insert.php' enctype='multipart/form-data'
  onSubmit='return ValidateForm()'>";
 // --------------------------------------
+
+echo "<br><center><div><h3>Data Entry:<br>
+<form  method=post name=goo action='insert.php' enctype='multipart/form-data'
+ onSubmit='return ValidateForm()'>";
 
 $sqlcont='SELECT DISTINCT ContractNo FROM datas';
 
