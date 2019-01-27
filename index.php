@@ -98,9 +98,7 @@ $rowlbl = mysqli_fetch_array($labelz);*/
 <?php
 
 
-echo "<br><center><div><h3>Data Entry:<br>
-<form  method=post name=goo action='insert.php' enctype='multipart/form-data'
- onSubmit='return ValidateForm()'>";
+
 // --------------------------------------
 
 echo "<br><center><div><h3>Data Entry:<br>
