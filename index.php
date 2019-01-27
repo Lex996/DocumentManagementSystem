@@ -153,12 +153,9 @@ echo "  or new<input type=text name=anotheremp  size=24>    ";
 echo " Date <input type=text name=Date  size=12 value='".date('Y-m-d')."' readonly>
 <p align=center><input type=submit value='SUBMIT' ></p></form>";
 echo "</div></div>";
-echo $_SESSION['user'];
-echo " | <a href='out'>Logout</a><b> | ";
-if ($_SESSION['user']==$admin) {
-echo " <a href='reg'>Users</a> | ";
-// echo $_SESSION['level'];
-echo " <a href='labels'>Labels translation</a><br><br>"; } } else {include "login.html";}
+
+
+} else {include "login.html";}
 
 ?>
 

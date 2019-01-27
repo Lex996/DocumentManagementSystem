@@ -57,20 +57,20 @@ echo "<tr>";
 if (!empty($row[1])) {
    echo "<td>$row[1]</td>";
   } 
- $fileasm='upload/'.$row['ContractNo'].'/'.$row['Date'].'/'.$row['Document'];
- $ext = substr($fileasm, strrpos($fileasm, '.') + 1);
- echo "<td>
-      <a href=$fileasm>
-      <img src='img/".$ext .".png'></a>
-      </td>";
-if (!empty($row[2])) { echo "</td><td>$row[2]</td>";} else { echo "<td>..</td>";}
+  if (!empty($row[2])) { echo "</td><td>$row[2]</td>";} else { echo "<td>..</td>";}
+  if (!empty($row[3])) { echo "<td>$row[3]</td>";} else { echo "<td></td>";}
+  if (!empty($row[4])) { echo "<td>$row[4]</td>";} else { echo "<td></td>";}
+  if (!empty($row[5])) { echo "<td>$row[5]</td>";} else { echo "<td></td>";}
+  if (!empty($row[6])) { echo "<td>$row[6]</td>";} else { echo "<td></td>";}
+  if (!empty($row[7])) { echo "<td>$row[7]</td>";} else { echo "<td></td>";}
+  //if (!empty($row[8])) { echo "<td> $row[8]</td>";} else { echo "<td></td>";}
+  $fileasm='upload/'.$row['ContractNo'].'/'.$row['Date'].'/'.$row['Document'];
+  $ext = substr($fileasm, strrpos($fileasm, '.') + 1);
+  echo "<td>
+        <a href=$fileasm>
+        <img src='img/".$ext .".png'></a>
+        </td>";
 
-if (!empty($row[3])) { echo "<td>$row[3]</td>";} else { echo "<td></td>";}
-// if (!empty($row[4])) { echo "<td>$row[4]</td>";} else { echo "<td></td>";}
-if (!empty($row[5])) { echo "<td>$row[5]</td>";} else { echo "<td></td>";}
-if (!empty($row[6])) { echo "<td>$row[6]</td>";} else { echo "<td></td>";}
-if (!empty($row[7])) { echo "<td>$row[7]</td>";} else { echo "<td></td>";}
-if (!empty($row[8])) { echo "<td> $row[8]</td>";} else { echo "<td></td>";}
 
 
 if ($_SESSION['user']=="admin"){echo "<td><a href='dell.php?id=$row[id]&which=".$fileasm."'><img src='img/delete.png'></a></td>";
