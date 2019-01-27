@@ -27,8 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if ($row ) {    
 
     $_SESSION['user']=$U;
-    echo("Uspesno logovanje");
-   // header("location:index.php"); }
+    
+    header("location:index.php"); }
      }
     else { echo($result);
      mysql_close($con);} }
