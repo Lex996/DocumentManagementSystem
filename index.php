@@ -97,9 +97,9 @@ $rowlbl = mysqli_fetch_array($labelz);*/
 <?php
 
 
-/*echo "<br><center><div><h3>Data Entry:<br>
+echo "<br><center><div><h3>Data Entry:<br>
 <form  method=post name=goo action='insert.php' enctype='multipart/form-data'
- onSubmit='return ValidateForm()'>";*/
+ onSubmit='return ValidateForm()'>";
 // --------------------------------------
 
 $sqlcont='SELECT DISTINCT ContractNo FROM datas';
@@ -133,7 +133,7 @@ $sqlco='SELECT DISTINCT Company FROM datas';
 $result=mysqli_query($con, "$sqlco");
 if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
-echo "<br><br> Company <select name=field6>";
+echo "<br><br> Company <select name=Company>";
 while($row = mysqli_fetch_array($result))
   { echo "<option>".$row['Company']."</option>";}
 echo "</select >";

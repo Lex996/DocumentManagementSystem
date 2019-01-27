@@ -73,7 +73,7 @@ if (!empty($row[1])) {
 
 
 
-if ($_SESSION['user']=="admin"){echo "<td><a href='dell.php?id=$row[id]&which=".$fileasm."'><img src='img/delete.png'></a></td>";
+if ($_SESSION['user']=="admin"){echo "<td><a href='delete.php?id=$row[id]&which=".$fileasm."'><img src='img/delete.png'></a></td>";
 
 echo "<td><a href='edit.php?id=$row[id]'><img src='img/edit.png'></a></td></tr>";}
 
