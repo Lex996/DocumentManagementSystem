@@ -1,8 +1,9 @@
 <?php
 session_start();
 
-require_once"config.php";
-include "config.php";
+require_once"connection.php";
+include "connection.php";
+//include "login.php";
 
 ?>
 <html>
@@ -17,31 +18,7 @@ include "config.php";
 	<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
   <script type="text/javascript" src="validate.js" ></script> 
     </head>
-<!--<style>
-input ,select{font-size:14;
-text-align:center;
-border:1px solid black;
-border-radius:6px;
-}
-body {
-background-image: url('img/sil.jpg');
 
- } 
-table{
-text-align:center;
-padding:3;
-border:1px solid black;
-border-radius:8px;
-background:#BCD4EC;
-box-shadow: 3px 3px 3px #0f055f;}
-div { border:10px solid grey;
-border-radius:8px;
-padding:3;
-width:60%;
-text-align:left;
-font-size:13;font-weight:bold;
-background-image: url('img/ptn.jpg');}
-</style> -->
 <script language='JavaScript'>
     <!--
     function ValidateForm() {
@@ -89,7 +66,7 @@ echo "<h1>$title</h1>";
 
 if (isset($_SESSION['user'])) {
 // ------------------import labels --------------------
-$lbl='SELECT * FROM table1';
+$lbl='SELECT * FROM datas';
 
 $labelz=mysqli_query($con, "$lbl");
 
@@ -102,22 +79,17 @@ $rowlbl = mysqli_fetch_array($labelz);
 <td>
 <select name=condition>
 <option ></option>
-<option value="field1"><?php echo $rowlbl['field1']; ?></option>
-<option value="field2"><?php echo $rowlbl['field2']; ?></option>
-<option value="field3"><?php echo $rowlbl['field3']; ?></option>
-<option value="field4"><?php echo $rowlbl['field4']; ?></option>
-<option value="field5"><?php echo $rowlbl['field5'] ;?></option>
-<option value="field6"> <?php echo $rowlbl['field6']; ?></option>
-<option value="field7"><?php echo $rowlbl['field7']; ?></option>
-<option value="field8"><?php echo $rowlbl['field8']; ?></option>
-</select></td>
-<td>
-<select  name="criteriaa">
-<option value ='LIKE' selected>Like</option></option>
-<option value ='NOT LIKE'>Ulike</option>
-<option value ='>'>Greater than</option>
-<option value ='<'>Less than</option>
-</select></td>
+<option value="ContractNo"><?php echo $rowlbl['ContractNo']; ?></option>
+<option value="Section"><?php echo $rowlbl['Section']; ?></option>
+<option value="Subject"><?php echo $rowlbl['Subject']; ?></option>
+<option value="RefNo"><?php echo $rowlbl['RefNo']; ?></option>
+<option value="Company"><?php echo $rowlbl['Company'] ;?></option>
+<option value="Employee"> <?php echo $rowlbl['Employee']; ?></option>
+<option value="Date"><?php echo $rowlbl['Date']; ?></option>
+<option value="Document"><?php echo $rowlbl['Document']; ?></option>
+</select>
+</td>
+
 
  <td><input type=text name="value4comparison">
 <input type="submit" value="Search" name="B1">
@@ -130,10 +102,10 @@ echo "<br><center><div><h3>Data Entry:<br>
 <form  method=post name=goo action='insert.php' enctype='multipart/form-data'
  onSubmit='return ValidateForm()'>";
 // --------------------------------------
-$sqlcont='SELECT DISTINCT field1 FROM table2';
+$sqlcont='SELECT DISTINCT field1 FROM datas';
 
 $result=mysqli_query($con, "$sqlcont");
-if (!$result) {echo "No results found ".mysql_error(); exit();} 
+if (!$result) {echo "No results found ".mysqli_error(); exit();} 
 
 echo "<br>".$rowlbl['field1']." <select name=field1>";
 while($row = mysql_fetch_array($result))
