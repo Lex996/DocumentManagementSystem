@@ -1,13 +1,13 @@
 
 
-    input ,select{font-size:14;
-        text-align:center;
-        border:1px solid black;
-        border-radius:6px;
+        input ,select{
+            font-size:14;
+            text-align:center;
+            border:1px solid black;
+            border-radius:6px;
         }
-        body {
+        body{
         background-image: url('img/sil.jpg');
-        
          } 
         table{
         text-align:center;
@@ -15,11 +15,14 @@
         border:1px solid black;
         border-radius:8px;
         background:#BCD4EC;
-        box-shadow: 3px 3px 3px #0f055f;}
-        div { border:10px solid grey;
-        border-radius:8px;
-        padding:3;
-        width:60%;
-        text-align:left;
-        font-size:13;font-weight:bold;
-        background-image: url('img/ptn.jpg');}
+        box-shadow: 3px 3px 3px #0f055f;
+        }
+        div { 
+            border:10px solid grey;
+            border-radius:8px;
+            padding:3;
+            width:60%;
+            text-align:left;
+            font-size:13;font-weight:bold;
+            background-image: url('img/ptn.jpg');
+        }

@@ -1,5 +1,4 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function clean($data) {
   $data = trim($data);
@@ -53,19 +52,10 @@ $query="Update datas set Document='$a8' Where id=$wch";
 $result=mysqli_query($con, $query);
  if (!$result) {echo "somsing rong<br><br>".mysqli_error(); exit;}
 // -----------------------------
-
-
-
-
-// -----------------------------
-//  //////////////////
 echo "<script language='javascript'>
 	alert('Updated successfully');
 	window.location = 'index.php';
 	</script>";
-
-
-
 mysqli_close($con);
 } else {header("location:index.php");}
 ?> 
